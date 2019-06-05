@@ -15,7 +15,7 @@ func (s *TodoService) GetTodo(id int) string {
 	if todo.Body == "" {
 		return "neet"
 	} else {
-		return s.format(dao.Get(id))
+		return s.format(todo)
 	}
 }
 func (s *TodoService) format(todo Todo) string {
