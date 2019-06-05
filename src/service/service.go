@@ -8,10 +8,10 @@ import (
 
 // dao(Data Access Object)を呼び出して、todoを取得してformatする。
 type TodoService struct {
+	Dao dao.TodoDaoInterface
 }
 func (s *TodoService) GetTodo(id int) string {
-	dao := dao.NewTodoDao()
-	todo := dao.Get(id)
+	todo := s.Dao.Get(id)
 	if todo.Body == "" {
 		return "neet"
 	} else {
