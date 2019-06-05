@@ -1,0 +1,1 @@
+INSERT INTO app.todos values (1, "aaa");
