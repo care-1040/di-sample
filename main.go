@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	. "github.com/care-1040/di-sample/src/service"
+)
 
 func main() {
 	service := TodoService{}

@@ -1,9 +1,10 @@
-package main
+package service
 
 import (
 	"github.com/stretchr/testify/assert"
 	"testing"
-)
+
+	)
 
 // 現状serviceのテストにmysqlが必要
 func TestTodoService(t *testing.T) {

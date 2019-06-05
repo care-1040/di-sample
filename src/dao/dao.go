@@ -1,13 +1,14 @@
-package main
+package dao
 
 import (
+	. "github.com/care-1040/di-sample/src"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"github.com/jinzhu/gorm"
 )
 
 // gormを通してmysqlにアクセスし、todoを取ってくる
 type TodoDaoInterface interface {
-	Gets() []Todo
+	Get(id int) Todo
 }
 type TodoDao struct {
 	db *gorm.DB

@@ -1,3 +1,4 @@
 di-sample
 vendor
 *.lock
+mock_dao
