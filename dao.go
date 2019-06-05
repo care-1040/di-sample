@@ -5,13 +5,20 @@ import (
 	"github.com/jinzhu/gorm"
 )
 
+// gormを通してmysqlにアクセスし、todoを取ってくる
 type TodoDaoInterface interface {
 	Gets() []Todo
 }
 type TodoDao struct {
 	db *gorm.DB
 }
+func (t *TodoDao) Get(id int) Todo {
+	todo := Todo{}
+	t.db.First(&todo, id)
+	return todo
+}
 
+// TodoDaoのコンストラクタ
 func NewTodoDao() *TodoDao {
 	DBMS     := "mysql"
 	USER     := "todo"
@@ -27,10 +34,4 @@ func NewTodoDao() *TodoDao {
 	}
 	todoDao := &TodoDao{db}
 	return todoDao
-}
-
-func (t *TodoDao) Get(id int) Todo {
-	todo := Todo{}
-	t.db.First(&todo, id)
-	return todo
 }

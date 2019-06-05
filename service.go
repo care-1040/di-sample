@@ -2,9 +2,8 @@ package main
 
 import "strconv"
 
-type TodoService struct {
-}
-
+// dao(Data Access Object)を呼び出して、dataを取得してformatする。
+type TodoService struct {}
 func (s *TodoService) GetTodo(id int) string {
 	dao := NewTodoDao()
 	return s.format(dao.Get(id))
