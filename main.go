@@ -1,8 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"github.com/ha-t2/di-sample/service"
+)
 
 func main() {
-	service := TodoService{}
+	service := service.TodoService{}
 	fmt.Println(service.GetTodo(1))
 }
