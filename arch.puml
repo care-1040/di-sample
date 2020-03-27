@@ -16,9 +16,13 @@ package "service" {
     class "ProductService" as service.ProductService <<V,Orchid>> {
         +Exist(id int) bool
     }
+    interface "ProductRepoInterface" as service.ProductRepoInterface <<V,Orchid>> {
+        +Get(id int): Product
+    }
 }
 
 main --> service.ProductService
-service.ProductService --> repo.ProductRepo
+service.ProductService --> model.Product
 repo.ProductRepo --> model.Product
+repo.ProductRepo --> service.ProductRepoInterface
 @enduml

@@ -1,24 +1,25 @@
 package repo
 
 import (
-	. "github.com/ha-t2/di-sample/model"
+	"github.com/ha-t2/di-sample/model"
+	"github.com/ha-t2/di-sample/service"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 )
 
-type ProductRepo struct {
+type productRepo struct {
 	db *gorm.DB
 }
 
 // gormを通してmysqlにアクセスし、Productを取ってくる
-func (t *ProductRepo) Get(id int) Product {
-	p := Product{}
+func (t *productRepo) Get(id int) model.Product {
+	p := model.Product{}
 	t.db.First(&p, id)
 	return p
 }
 
 // ProductRepoのコンストラクタ
-func NewProductRepo() *ProductRepo {
+func NewProductRepo() service.ProductRepoInterface {
 	DBMS := "mysql"
 	USER := "di"
 	PASS := "password"
@@ -31,6 +32,6 @@ func NewProductRepo() *ProductRepo {
 	if err != nil {
 		panic(err.Error())
 	}
-	d := &ProductRepo{db}
+	d := &productRepo{db: db}
 	return d
 }
