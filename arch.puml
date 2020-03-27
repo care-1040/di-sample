@@ -1,24 +1,24 @@
 @startuml
 package "model" {
-    class "Todo" as model.Todo <<V,Orchid>> {
+    class "Product" as model.Product <<V,Orchid>> {
         +Id: int
-        +Body: string
+        +Price: int
     }
 }
 
 package "dao" {
-    class "TodoDao" as dao.TodoDao <<V,Orchid>> {
-        +Get(id int): Todo
+    class "ProductDao" as dao.ProductDao <<V,Orchid>> {
+        +Get(id int): Product
     }
 }
 
 package "service" {
-    class "TodoService" as service.TodoService <<V,Orchid>> {
-        +GetTodo(id int) string
+    class "ProductService" as service.ProductService <<V,Orchid>> {
+        +GetPriceWithTax(id int) int
     }
 }
 
-main --> service.TodoService
-service.TodoService --> dao.TodoDao
-dao.TodoDao --> model.Todo
+main --> service.ProductService
+service.ProductService --> dao.ProductDao
+dao.ProductDao --> model.Product
 @enduml

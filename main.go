@@ -6,6 +6,7 @@ import (
 )
 
 func main() {
-	service := service.TodoService{}
-	fmt.Println(service.GetTodo(1))
+	// 商品をidで取得して税込価格を表示する
+	s := service.ProductService{}
+	fmt.Println(s.GetPriceWithTax(1))
 }

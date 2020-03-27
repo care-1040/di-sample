@@ -1,7 +1,6 @@
 package model
 
-// Todoのモデル
-type Todo struct {
+type Product struct {
 	Id   int
-	Body string
+	Price int
 }

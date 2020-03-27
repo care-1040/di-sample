@@ -6,21 +6,21 @@ import (
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 )
 
-// gormを通してmysqlにアクセスし、todoを取ってくる
-type TodoDao struct {
+type ProductDao struct {
 	db *gorm.DB
 }
 
-func (t *TodoDao) Get(id int) Todo {
-	todo := Todo{}
-	t.db.First(&todo, id)
-	return todo
+// gormを通してmysqlにアクセスし、Moneyを取ってくる
+func (t *ProductDao) Get(id int) Product {
+	p := Product{}
+	t.db.First(&p, id)
+	return p
 }
 
 // TodoDaoのコンストラクタ
-func NewTodoDao() *TodoDao {
+func NewProductDao() *ProductDao {
 	DBMS := "mysql"
-	USER := "todo"
+	USER := "di"
 	PASS := "password"
 	PROTOCOL := "tcp(localhost:3306)"
 	DBNAME := "app"
@@ -31,6 +31,6 @@ func NewTodoDao() *TodoDao {
 	if err != nil {
 		panic(err.Error())
 	}
-	todoDao := &TodoDao{db}
-	return todoDao
+	d := &ProductDao{db}
+	return d
 }

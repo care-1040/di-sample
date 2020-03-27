@@ -2,23 +2,15 @@ package service
 
 import (
 	"github.com/ha-t2/di-sample/dao"
-	. "github.com/ha-t2/di-sample/model"
-	"strconv"
+	"math"
 )
 
-// dao(Data Access Object)を呼び出して、todoを取得してformatする。
-type TodoService struct {
+type ProductService struct {
 }
 
-func (s *TodoService) GetTodo(id int) string {
-	dao := dao.NewTodoDao()
-	todo := dao.Get(id)
-	if todo.Body == "" {
-		return "neet"
-	} else {
-		return s.format(todo)
-	}
-}
-func (s *TodoService) format(todo Todo) string {
-	return strconv.Itoa(todo.Id) + ", " + todo.Body
+// dao(Data Access Object)を呼び出して、税込価格を取得する。
+func (s *ProductService) GetPriceWithTax(id int) int {
+	d := dao.NewProductDao()
+	product := d.Get(id)
+	return int(math.Floor( float64(product.Price) * 1.1))
 }
