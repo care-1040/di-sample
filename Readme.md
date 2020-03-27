@@ -6,6 +6,9 @@
 ## Test
 `go test ./...`
 
-## 問題
+# アーキテクチャ
+![arch](./arch.png)
+
+# 問題
 - mysql serverがあってかつ、適切にデータを置かないとserviceのテストできない。
 - docker-compose せずにserviceのtestを通そう！

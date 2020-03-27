@@ -1,0 +1,24 @@
+@startuml
+package "model" {
+    class "Todo" as model.Todo <<V,Orchid>> {
+        +Id: int
+        +Body: string
+    }
+}
+
+package "dao" {
+    class "TodoDao" as dao.TodoDao <<V,Orchid>> {
+        +Get(id int): Todo
+    }
+}
+
+package "service" {
+    class "TodoService" as service.TodoService <<V,Orchid>> {
+        +GetTodo(id int) string
+    }
+}
+
+main --> service.TodoService
+service.TodoService --> dao.TodoDao
+dao.TodoDao --> model.Todo
+@enduml
