@@ -22,7 +22,10 @@ package "service" {
 }
 
 main --> service.ProductService
-service.ProductService --> model.Product
+main --> repo.ProductRepo
+
+service.ProductRepoInterface --> model.Product
+
 repo.ProductRepo --> model.Product
 repo.ProductRepo --> service.ProductRepoInterface
 @enduml
