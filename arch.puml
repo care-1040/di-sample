@@ -14,7 +14,7 @@ package "repo" {
 
 package "service" {
     class "ProductService" as service.ProductService <<V,Orchid>> {
-        +GetPriceWithTax(id int) int
+        +Exist(id int) bool
     }
 }
 
