@@ -6,8 +6,8 @@ package "model" {
     }
 }
 
-package "dao" {
-    class "ProductDao" as dao.ProductDao <<V,Orchid>> {
+package "repo" {
+    class "ProductRepo" as repo.ProductRepo <<V,Orchid>> {
         +Get(id int): Product
     }
 }
@@ -19,6 +19,6 @@ package "service" {
 }
 
 main --> service.ProductService
-service.ProductService --> dao.ProductDao
-dao.ProductDao --> model.Product
+service.ProductService --> repo.ProductRepo
+repo.ProductRepo --> model.Product
 @enduml

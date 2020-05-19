@@ -1,16 +1,15 @@
 package service
 
 import (
-	"github.com/ha-t2/di-sample/dao"
-	"math"
+	"github.com/ha-t2/di-sample/repo"
 )
 
 type ProductService struct {
 }
 
-// dao(Data Access Object)を呼び出して、税込価格を取得する。
-func (s *ProductService) GetPriceWithTax(id int) int {
-	d := dao.NewProductDao()
+// repo(Repository)を呼び出して、存在チェックをする。
+func (s *ProductService) Exist(id int) bool {
+	d := repo.NewProductRepo()
 	product := d.Get(id)
-	return int(math.Floor( float64(product.Price) * 1.1))
+	return product.Id == id
 }

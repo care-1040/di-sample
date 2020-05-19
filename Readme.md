@@ -4,7 +4,7 @@
 ## Build and Run app
 `go build . && ./di-sample`
 ## Test
-`go test ./...`
+`go test ./... -count=1`
 
 # アーキテクチャ
 ![arch](./arch.png)

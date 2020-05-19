@@ -6,10 +6,30 @@ import (
 )
 
 // 現状serviceのテストにmysqlが必要
-func TestMoneyService1(t *testing.T) {
+func TestProductService_Exist(t *testing.T) {
+	var cases = []struct {
+		name   string
+		input  int
+		expected bool
+	}{
+		{
+			name:   "exist",
+			input:  1,
+			expected: true,
+		},
+		{
+			name:   "not exist",
+			input:  2,
+			expected: false,
+		},
+	}
 	s := ProductService{}
-	result := s.GetPriceWithTax(1)
-	expected := 110
-	assert.Equal(t, result, expected)
-}
 
+	for _, c := range cases {
+		t.Run(c.name, func(t *testing.T) {
+			got := s.Exist(c.input)
+			assert.Equal(t, got, c.expected)
+		})
+	}
+
+}

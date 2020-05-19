@@ -1,4 +1,4 @@
-package dao
+package repo
 
 import (
 	. "github.com/ha-t2/di-sample/model"
@@ -6,19 +6,19 @@ import (
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 )
 
-type ProductDao struct {
+type ProductRepo struct {
 	db *gorm.DB
 }
 
-// gormを通してmysqlにアクセスし、Moneyを取ってくる
-func (t *ProductDao) Get(id int) Product {
+// gormを通してmysqlにアクセスし、Productを取ってくる
+func (t *ProductRepo) Get(id int) Product {
 	p := Product{}
 	t.db.First(&p, id)
 	return p
 }
 
-// TodoDaoのコンストラクタ
-func NewProductDao() *ProductDao {
+// ProductRepoのコンストラクタ
+func NewProductRepo() *ProductRepo {
 	DBMS := "mysql"
 	USER := "di"
 	PASS := "password"
@@ -31,6 +31,6 @@ func NewProductDao() *ProductDao {
 	if err != nil {
 		panic(err.Error())
 	}
-	d := &ProductDao{db}
+	d := &ProductRepo{db}
 	return d
 }
