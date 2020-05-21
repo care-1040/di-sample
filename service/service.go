@@ -8,6 +8,10 @@ type ProductService struct {
 	Repo ProductRepoInterface
 }
 
+func NewProductService(repo ProductRepoInterface) ProductService {
+	return ProductService{Repo:repo}
+}
+
 // repo(Repository)を呼び出して、存在チェックをする。
 func (s *ProductService) Exist(id int) bool {
 	product := s.Repo.Get(id)

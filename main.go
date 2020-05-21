@@ -8,7 +8,7 @@ import (
 
 func main() {
 	r := repo.NewProductRepo()
-	s := service.ProductService{Repo: r}
+	s := service.NewProductService(r)
 	fmt.Println(s.Exist(1))
 	fmt.Println(s.Exist(2))
 }
